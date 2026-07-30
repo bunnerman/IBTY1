@@ -11,6 +11,11 @@ public class Example
 		Integer wrprObj =  Integer.valueOf(st);
 		int primVal = wrprObj.intValue();
 
-		System.out.print(st + " " + wrprObj + " " + primVal);
+		
+		System.out.println(st + " " + wrprObj + " " + primVal);
+		if (primVal % 2 == 0)
+			System.out.print("Even");
+		else
+			System.out.print("Odd");
     }
 }
