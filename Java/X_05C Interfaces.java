@@ -1,42 +1,44 @@
 class Maine {
     public static void main(String[] args) {
-        Student s = new Student(4, "Tom", 85.5, 5, "Tom", 89.2);
-
-        s.displayFY();
-        s.displaySY();
+		Student fyS = new Student();
+		Student syS = new Student();
+		fyS.getDataFY(4, "Arnold", 98.3);
+		syS.getDataSY(49, "Bob", 85.8);
+		fyS.showFY();
+		System.out.println();
+		syS.showSY();
     }
 }
 
 interface FY {
-    void displayFY();
+    void showFY();
 }
 
 interface SY {
-    void displaySY();
+    void showSY();
 }
 
 class Student implements FY, SY {
-    int fyRoll, syRoll;
-    String fyName, syName;
-    double fyResult, syResult;
+	int fyRn; String fyN; double fyRes;
+	int syRn; String syN; double syRes;
 
-    Student(int r1, String n1, double res1, int r2, String n2, double res2) {
-        this.fyRoll = r1;
-        this.fyName = n1;
-        this.fyResult = res1;
+    public void getDataFY(int rn, String n, double res) {
+		this.fyRn = rn;
+		this.fyN = n;
+		this.fyRes = res;
+	}
 
-        // SY Initialization
-        this.syRoll = r2;
-        this.syName = n2;
-        this.syResult = res2;
+	public void getDataSY(int rn, String n, double res) {
+		this.syRn = rn;
+		this.syN = n;
+		this.syRes = res;
+	}
+
+    public void showFY() {
+        System.out.println("FY\nRoll No: " + fyRn + "\nName: " + fyN + "\nResult: " + fyRes);
     }
 
-    // Interface Method Implementation
-    public void displayFY() {
-        System.out.println("FY Details -> Roll No: " + fyRoll + ", Name: " + fyName + ", Result: " + fyResult);
-    }
-
-    public void displaySY() {
-        System.out.println("SY Details -> Roll No: " + syRoll + ", Name: " + syName + ", Result: " + syResult);
+    public void showSY() {
+		System.out.println("SY\nRoll No: " + syRn + "\nName: " + syN + "\nResult: " + syRes);
     }
 }
