@@ -31,7 +31,8 @@ print(f"F1-Score (precision + recall): {f1_score(y_test, y_pred):.4f}")
 print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
 #
-#	               CLASS A (+ve)	 CLASS B (-ve)
+#	PREDICTED ->   CLASS A (+ve)	 CLASS B (-ve)
+#	ACTUAL ⬇️      
 #	CLASS A (+ve)  TRUE POSITIVE     FALSE NEGATIVE
 #	CLASS B (-ve)  FALSE POSITIVE	 TRUE NEGATIVE
 
