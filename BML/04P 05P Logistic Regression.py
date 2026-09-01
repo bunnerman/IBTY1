@@ -24,20 +24,20 @@ knn.fit(X_train_scaled, y_train)
 y_pred = knn.predict(X_test_scaled) # test via predicting
 
 # see model results
-print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
-print(f"Precision: {precision_score(y_test, y_pred):.4f}")
-print(f"Recall: {recall_score(y_test, y_pred):.4f}")
-print(f"F1-Score: {f1_score(y_test, y_pred):.4f}")
+print(f"Accuracy (how close to real value): {accuracy_score(y_test, y_pred):.4f}")
+print(f"Precision (how trustworthy when \"yes\"): {precision_score(y_test, y_pred):.4f}")
+print(f"Recall (how many +ve items correctly found): {recall_score(y_test, y_pred):.4f}")
+print(f"F1-Score (precision + recall): {f1_score(y_test, y_pred):.4f}")
 print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
+#
+#	               CLASS A (+ve)	 CLASS B (-ve)
+#	CLASS A (+ve)  TRUE POSITIVE     FALSE NEGATIVE
+#	CLASS B (-ve)  FALSE POSITIVE	 TRUE NEGATIVE
 
 # experiment with other values of k
-print("\n" + "="*50)
-print("--- K-Value Comparison ---")
-print(f"{'K Value':<10}{'Accuracy':<12}{'Precision':<12}{'Recall':<12}{'F1-Score':<12}")
-print("-" * 50)
-
-k_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+print(f"{'K Value':<10}{'Accuracy':<10}{'Precision':<10}{'Recall':<10}{'F1-Score':<10}")
+k_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 for k in k_values:
     model = KNeighborsClassifier(n_neighbors=k)
     model.fit(X_train_scaled, y_train)
@@ -48,4 +48,4 @@ for k in k_values:
     rec = recall_score(y_test, preds)
     f1 = f1_score(y_test, preds)
     
-    print(f"{k:<10}{acc:<12.4f}{prec:<12.4f}{rec:<12.4f}{f1:<12.4f}")
+    print(f"{k:<10}{acc:<10.4f}{prec:<10.4f}{rec:<10.4f}{f1:<10.4f}")
