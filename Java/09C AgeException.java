@@ -9,13 +9,8 @@ class Maine
 		int n = sc.nextInt();
 
 		checkA obj = new checkA();
-
-		try {
-			obj.checkAge(n);
-		}
-		catch (LowAgeException e) {
-			System.out.print("You are legally a Minor");
-		}
+		
+		obj.checkAge(n);
     }
 }
 
@@ -32,8 +27,8 @@ class LowAgeException extends RuntimeException
 class checkA {
 	public void checkAge(int n) {
 		if (n >= 18)
-			System.out.print("You are legally an Adult");
+			System.out.print("Adult");
 		else
-			throw new LowAgeException("Error: Below 18");
+			throw new LowAgeException("Error: Minor");
 	}
 }
