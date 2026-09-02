@@ -9,32 +9,25 @@ class Maine
 		int n = sc.nextInt();
 
 		CheckN obj = new CheckN();
-
-
-		try {
-			obj.checkNum(n);
-		}
-		catch (BadNumException e) {
-			System.out.print("Exception Caught");
-		}
+		obj.checkNum(n);
     }
 }
 
-class BadNumException extends Exception
+class OddNumException extends RuntimeException
 {
-	public BadNumException() {
+	public OddNumException() {
 		super();
 	}
-	public BadNumException(String msg) {
+	public OddNumException(String msg) {
 		super(msg);
 	}
 }
 
 class CheckN {
-	public void checkNum(int n) throws BadNumException {
+	public void checkNum(int n) throws OddNumException {
 		if (n % 2 == 0)
 			System.out.print("Number is even");
 		else
-			throw new BadNumException("Error: Odd Number");
+			throw new OddNumException("Error: Odd Number");
 	}
 }
