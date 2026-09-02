@@ -8,7 +8,7 @@ class Maine
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 
-		checkA obj = new checkA();
+		CheckA obj = new CheckA();
 		
 		obj.checkAge(n);
     }
@@ -24,7 +24,7 @@ class LowAgeException extends RuntimeException
 	}
 }
 
-class checkA {
+class CheckA {
 	public void checkAge(int n) {
 		if (n >= 18)
 			System.out.print("Adult");
