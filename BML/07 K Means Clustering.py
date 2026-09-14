@@ -8,8 +8,6 @@ markSeg = pd.read_csv('markSeg.csv')
 
 X = markSeg[['AnnualIncome', 'SpendingScore']]
 
-optimalK = 2
-
 k_range = range(2, 5+1)
 k_ary = []
 
