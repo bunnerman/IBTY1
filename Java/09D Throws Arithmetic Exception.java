@@ -4,31 +4,23 @@ class Maine
 {
     public static void main(String[] args) 
     {
-        System.out.print("Enter integer: ");
+       	System.out.print("Enter 2 integers: ");
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
+		int a = sc.nextInt(); int b = sc.nextInt();
 
-		checkA obj = new checkA();
-		
-		obj.checkAge(n);
+		DivisionClass obj = new DivisionClass();
+		obj.div(a, b);
     }
 }
 
-class LowAgeException extends RuntimeException
-{
-	public LowAgeException() {
-		super();
-	}
-	public LowAgeException(String msg) {
-		super(msg);
-	}
-}
-
-class checkA {
-	public void checkAge(int n) {
-		if (n >= 18)
-			System.out.print("Adult");
-		else
-			throw new LowAgeException("Error: Minor");
+class DivisionClass {
+	void div(int a, int b) throws ArithmeticException {
+		try {
+			int n = a / b;
+			System.out.print("Quotient is " + n);
+		}
+		catch (ArithmeticException e) {
+			System.out.println("Exception thrown, undefined, 0 is divisor");
+		}
 	}
 }
