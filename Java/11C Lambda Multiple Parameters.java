@@ -9,7 +9,7 @@ class Maine
 			int vol = l * b * h;
 			return vol;
 		};
-		System.out.print("Enter length, breadth, height: ");;
+		System.out.print("Enter length, breadth, height: ");
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 		int b = sc.nextInt();
