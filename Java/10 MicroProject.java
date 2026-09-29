@@ -16,20 +16,18 @@ public class McProj
 		
 		// 1
 		obj = new MCQ(
-			"What is the capital of Morocco?", 
-			5, 
-			List.of("Athens", "Ibirsh", "Cairo", "Rabat"), 
+			"How much storage does a short int take in C?", 
+			2, 
+			List.of("4 bits", "1 byte", "3 bytes", "16 bits"), 
 			4
-		);
-		test.add(obj);
+		); test.add(obj);
 
 		// 2
 		obj = new MRQ(
 			"\nWhat were often used as previous names for the current day city of Istanbul?", 
-			10, 
-			List.of("Byzantine", "Bosphorus", "Constantinople", "Alendal"), 
-			new ArrayList<>(List.of(1, 3)));
-		test.add(obj);
+			5, 
+			List.of("Byzantine", "Bosphorus", "Constantinople", "Marmara"), 
+			new ArrayList<>(List.of(1, 3))); test.add(obj);
 
 		// 3
 		obj = new MRQ(
@@ -37,17 +35,34 @@ public class McProj
 			4,
 			List.of("Utrecht", "Bremen", "Berlin", "Dinsmark"),
 			new ArrayList<>(List.of(2, 3))
-		);
-		test.add(obj);
+		); test.add(obj);
 
 		// 4
+		obj = new TextBased(
+			"\nPi upto 5 decimal places",
+			3,
+			"3.14159"
+		); test.add(obj);
 		
+		// 5
+		obj = new TextBased(
+			"\nChemical Formula of Hydrogen Peroxide",
+			2,
+			"H2O2"
+		); test.add(obj);
+
+		// 6
+		obj = new MRQ(
+			"\nWhich of the following are linear data structures?",
+			2,
+			List.of("Hashmap", "Tree", "Stack", "Graph"),
+			new ArrayList<>(List.of(3))
+		); test.add(obj);
+
+
 
 		for (int i = 0; i < test.size(); i++)
-		{
 			test.get(i).methodChainer();
-		}
-
 
 		System.out.print(obtainedMarks + "/" + totalMarks + " marks");
 
@@ -105,11 +120,10 @@ abstract class Multiple extends Question
 	@Override
 	public void methodChainer() {
 		this.display();
-		McProj.input = McProj.sc.next();
+		McProj.input = McProj.sc.nextLine();
 		this.evaluate(McProj.input);
 	}
 }
-
 
 class MCQ extends Multiple 
 {
@@ -142,9 +156,9 @@ class MCQ extends Multiple
 	}
 }
 
-class MRQ extends Multiple 
 // unforgiving, no partial marks unless all correct (reason: lowk dont wanna bother)
-// sorted,comma,separated,no-space,values
+// sorted, comma, separated, values
+class MRQ extends Multiple 
 {
 	ArrayList<Integer> correctAnswers;
 	public MRQ(String q, int m, List<String> o, ArrayList<Integer> c)
@@ -180,22 +194,42 @@ class MRQ extends Multiple
 	}
 }
 
-/*
-abstract class TextBased
+// EXACT answer required, impractical but realistic implementation too complex for an assessment assignment
+// handles numbers too, no annoying floating point errors
+class TextBased extends Question
 {
+	String answer;
 	
-}
+	public TextBased(String q, int m, String c)
+	{
+		super(q, m);
+		this.answer = c;
+	}
 
-class Numerical extends TextBased
-{
+	@Override
+	public void display()
+	{
+		System.out.print(qstn + " (" + marks + " marks): ");
+	}
 
-}
+	@Override 
+	public boolean checkAnswer(String attempt)
+	{
+		if (attempt.length() == 0)
+			throw new InvalidAnswerException("No Answer Entered");
+		if (attempt.equalsIgnoreCase(answer))
+			return true;
+		else
+			return false;
+	}
 
-class TextAnswer extends TextBased
-{
-
-}
-*/
+	@Override
+	public void methodChainer() {
+		this.display();
+		McProj.input = McProj.sc.nextLine();
+		this.evaluate(McProj.input);
+	}
+}	
 
 class InvalidAnswerException extends RuntimeException
 {
