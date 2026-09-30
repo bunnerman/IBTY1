@@ -103,7 +103,7 @@ abstract class Question
 	public Question(String q, int m)
 	{
 		String temp;
-		temp = TextStyle.BOLD + TextStyle.ULINE + q + TextStyle.RESET;
+		temp = TextStyle.Bold + TextStyle.ULine + q + TextStyle.RESET;
 		this.qstn = temp;
 		this.marks = m;
 	}
@@ -275,10 +275,10 @@ class InvalidAnswerException extends RuntimeException
 class TextStyle 
 {
     public static final String RESET = "\u001B[0m";
-    public static final String red = "\u001B[31m";
-    public static final String green = "\u001B[32m";
-	public static final String BOLD = "\u001B[1m";
-	public static final String ULINE = "\u001B[4m";
-	public static final String yellow = "\u001B[33m";
-	public static final String purple = "\u001B[35m";
+    public static final String red = "\u001B[31m"; // wrong
+    public static final String green = "\u001B[32m"; // correct
+	public static final String Bold = "\u001B[1m";
+	public static final String ULine = "\u001B[4m"; 
+	public static final String yellow = "\u001B[33m"; // when error exception
+	public static final String purple = "\u001B[35m"; // instructions
 }
