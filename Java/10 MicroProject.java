@@ -1,6 +1,8 @@
 // import java.io.IOException; // development remnant
 import java.text.NumberFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
+
 
 public class McProj 
 {
@@ -14,6 +16,12 @@ public class McProj
 		ArrayList<Question> test = new ArrayList<>();
 		Question obj;
 		
+		System.out.println(TextStyle.purple + "----INSTRUCTIONS FOR TEST----");
+		System.out.println("a. Enter numbers for MCQs and MRQs");
+		System.out.println("b. Enter exact answer, not less not more (strict checking)");
+		System.out.println("c. For MRQs, comma separate the values. eg: a, d" + "\n-----------------------------\n" + TextStyle.RESET);
+
+
 		// 1
 		obj = new MCQ(
 			"How much storage does a short int take in C?", 
@@ -59,11 +67,28 @@ public class McProj
 			new ArrayList<>(List.of(3))
 		); test.add(obj);
 
-
+		// 7
+		obj = new MCQ(
+			"\nWhat keyword is used to prevent inheritance of classes in Java?",
+			2,
+			List.of("static", "abstract", "private", "final"),
+			4
+		); test.add(obj);
 
 		for (int i = 0; i < test.size(); i++)
-			test.get(i).methodChainer();
-
+		{
+			try {
+				System.out.print("[Q" + (i + 1) + "] ");
+				test.get(i).methodChainer();
+			}
+			catch (InvalidAnswerException e)
+			{
+				System.out.println(TextStyle.yellow + "\nERROR: Please enter invalid answer format\n" + TextStyle.RESET);
+				i--;
+				continue;
+			}
+			
+		}
 		System.out.print(obtainedMarks + "/" + totalMarks + " marks");
 
 		sc.close();
@@ -77,7 +102,9 @@ abstract class Question
 
 	public Question(String q, int m)
 	{
-		this.qstn = q;
+		String temp;
+		temp = TextStyle.BOLD + TextStyle.ULINE + q + TextStyle.RESET;
+		this.qstn = temp;
 		this.marks = m;
 	}
 
@@ -87,14 +114,17 @@ abstract class Question
 
 	public void evaluate(String attempt)
 	{
-		McProj.totalMarks += marks;
 		if (checkAnswer(attempt))
 		{
-			System.out.println("CORRECT");
+			System.out.println(TextStyle.green + "CORRECT\n" + TextStyle.RESET);
+			McProj.totalMarks += marks;
 			McProj.obtainedMarks += marks;
 		}
 		else
-			System.out.println("WRONG");
+		{	
+			McProj.totalMarks += marks;
+			System.out.println(TextStyle.red + "WRONG\n" + TextStyle.RESET);
+		}
 	}
 
 }
@@ -239,4 +269,16 @@ class InvalidAnswerException extends RuntimeException
 	public InvalidAnswerException(String msg) {
 		super(msg);
 	}
+}
+
+// ANSI Color Codes
+class TextStyle 
+{
+    public static final String RESET = "\u001B[0m";
+    public static final String red = "\u001B[31m";
+    public static final String green = "\u001B[32m";
+	public static final String BOLD = "\u001B[1m";
+	public static final String ULINE = "\u001B[4m";
+	public static final String yellow = "\u001B[33m";
+	public static final String purple = "\u001B[35m";
 }
