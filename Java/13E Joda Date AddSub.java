@@ -10,7 +10,7 @@ class Maine
 	{
 		Scanner sc = new Scanner(System.in);
 		DateTimeFormatter frmtr = DateTimeFormat.forPattern("dd-MM-yyyy");
-		System.out.print("Enter Date A (dd-mm-YYYY): ");
+		System.out.print("Enter Date (dd-mm-YYYY): ");
 		String s = sc.nextLine();
 		LocalDate date = LocalDate.parse(s, frmtr);
 		
