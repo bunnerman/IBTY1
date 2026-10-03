@@ -1,27 +1,24 @@
 class Main
 {
-    private static final Object lock = new Object();
-    private static int turn = 1;
-
     public static void main(String[] args)
     {
         Thread t1 = new Thread(() ->
 			{
-				for (int i = 0 ; i < 5; i++)
-					System.out.println(i);
+				for (int i = 1 ; i <= 10; i++)
+					System.out.print(i);
 			}
 		);
 		Thread t2 = new Thread(() ->
 			{
-				for (char ch = 'A'; ch <= 'E'; ch++)
-					System.out.println(ch);
+				for (char ch = 'A'; ch <= 'J'; ch++)
+					System.out.print(ch);
 			}
 		);
 		Thread t3 = new Thread(() ->
 			{
-				char[] ary = {'!', '@', '#', '$', '%'};
+				char[] ary = {'!', '@', '#', '$', '%', '^', '&', '*', '(', ')'};
 				for (char i : ary)
-					System.out.println(i);
+					System.out.print(i);
 			}
 		);
 
