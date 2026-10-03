@@ -1,4 +1,4 @@
-class Main {
+class Maine {
     static int n = 1;
 
     public static void main(String[] args) {
