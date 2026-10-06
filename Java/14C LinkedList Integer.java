@@ -4,20 +4,22 @@ class Maine
 {
     public static void main(String[] args)
     {
-        LinkedList<Integer> numbers = new LinkedList<>();
+        LinkedList<Integer> obj = new LinkedList<>();
 
-        // Insertion
-        numbers.add(10);
-        numbers.add(20);
-        numbers.add(30);
-        numbers.add(1, 15); // Inserts 15 at index 1
+        obj.addFirst(1);
+        obj.addLast(2);
+        obj.add(1, 3);
+		obj.addLast(4);
+		obj.addLast(5);
+		obj.addFirst(6);
 
-        // Deletion
-        numbers.remove(0);                   // Removes element at index 0 (10)
-        numbers.remove(Integer.valueOf(30)); // Removes by value (30)
+    
+        obj.remove();
+		obj.removeFirst();
+		obj.removeLast();
+        obj.remove(Integer.valueOf(30));
 
-        // Traversal
-        for (int num : numbers)
-            System.out.print(num + " ");
+        for (int i : obj)
+            System.out.print(i + " ");
     }
 }
