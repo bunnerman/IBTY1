@@ -9,7 +9,7 @@ class Main
 	public static void main(String[] args)
 	{
 		List<String> studentNames = new ArrayList<>(Arrays.asList("John", "William", "David", "Eli", "Adam", "Madison", "Arnold", "Peter", "Evelyn"));
-		Collections.sort(studentNames);
+		Collections.sort(studentNames, (a, b) -> b.compareTo(a)); // reverse sort
 		System.out.print(studentNames);
 	}
 }
