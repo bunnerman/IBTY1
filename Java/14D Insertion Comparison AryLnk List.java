@@ -32,13 +32,13 @@ class Maine
 
 		aryS = Instant.now();
         for (int i = 0; i < maxNum; i++)
-            ary.addFirst(i);
+            ary.addLast(i);
         aryE = Instant.now();
         aryT = Duration.between(aryS, aryE).toNanos();
 
         lnkS = Instant.now();
         for (int i = 0; i < maxNum; i++)
-            lnk.addFirst(i);
+            lnk.addLast(i);
         lnkE = Instant.now();
         lnkT = Duration.between(lnkS, lnkE).toNanos();
 
