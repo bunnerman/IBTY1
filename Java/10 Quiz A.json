@@ -1,0 +1,46 @@
+[
+  {
+    "type": "MCQ",
+    "qstn": "What is the capital of Serbia?",
+    "optns": ["Warsaw", "Belgrade", "Cinigrad", "Zagreb", "Bratislava"],
+    "ans": 2
+  },
+  {
+    "type": "MRQ",
+    "qstn": "What were previous names for the present day city of Istanbul?",
+    "optns": ["Byzantium", "Bosphorus", "Constantinople"],
+    "ans": [1, 3]
+  },
+  {
+    "type": "TextBased",
+    "qstn": "What year did World War II end in?",
+    "ans": "1945"
+  },
+  {
+    "type": "MRQ",
+    "qstn": "Which of the following cities is present the following countries? (Germany, Malaysia)",
+    "optns": ["Bremen", "Selatapura", "George Town", "Nuremburg", "Dinsmark"],
+    "ans": [1, 3, 4]
+  },
+  {
+    "type": "TextBased",
+    "qstn": "What is the name of the chains holding the Fenrir Wolf in Norse Mythology?",
+    "ans": "Gleipnir"
+  },
+  {
+    "type": "TextBased",
+    "qstn": "Name the capital of Tajikistan",
+    "ans": "Dushanbe"
+  },
+  {
+    "type": "MCQ",
+    "qstn": "What was the official name of the Democratic Republic of Congo in 1984",
+    "optns": ["DRC (no change)", "Rhodesia", "Zaire", "Dhekelia"],
+    "ans": 3
+  },
+  {
+    "type": "TextBased",
+    "qstn": "3 Letter Initials of the person who made this quiz",
+    "ans": "PRB"
+  }
+]
