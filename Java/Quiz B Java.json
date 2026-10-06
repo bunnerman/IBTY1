@@ -1,0 +1,25 @@
+[
+  {
+    "type": "MCQ",
+    "qstn": "What keyword is used to prevent method overriding",
+    "optns": ["finally", "static", "final", "const"],
+    "ans": 3
+  },
+  {
+    "type": "TextBased",
+    "qstn": "What is the keyword used to prevent object instantiation and is reserved for use in inheritance blueprinting? (Hint: 7 letters long, begins with a)",
+    "ans": "abstract"
+  },
+  {
+    "type": "MRQ",
+    "qstn": "What are features of Java?",
+    "optns": ["Platform Depedent", "Multithread Support", "Platform Independent", "OOP", "Functional Programming Only", "Direct Multiple Inheritance Supported"],
+    "ans": [2, 3, 4]
+  },
+  {
+    "type": "MCQ",
+    "qstn": "What Experiment number does this MCRPRJT come under?",
+    "optns": ["One", "Eleven", "Sixteen", "Ten", "Twelve"],
+    "ans": 4
+  }
+]
