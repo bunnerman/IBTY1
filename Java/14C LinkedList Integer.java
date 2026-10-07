@@ -17,7 +17,7 @@ class Maine
         obj.remove();
 		obj.removeFirst();
 		obj.removeLast();
-        obj.remove(Integer.valueOf(30));
+        obj.remove(Integer.valueOf(3));
 
         for (int i : obj)
             System.out.print(i + " ");
