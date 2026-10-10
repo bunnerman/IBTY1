@@ -20,4 +20,5 @@ print(classification_report(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
 
 topI = np.argsort(model.feature_importances_)[::-1][:5] # reverse and pick top 5
-print(topI)
+for i in topI:
+    print(str(X.columns[i]) + " : " + str(model.feature_importances_[i]))
