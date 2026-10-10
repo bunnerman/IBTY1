@@ -32,3 +32,4 @@ for hours in [2, 5]:
     print(hours, "hours -> probability", round(p, 3), "class", label)
 
 correct = sum(classify(h)[1] == y[i] for i, h in enumerate(x_raw))
+print("Training accuracy:", round(100 * correct / n, 2), "%")
