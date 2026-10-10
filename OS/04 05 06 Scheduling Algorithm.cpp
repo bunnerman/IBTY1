@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <climits>
 
 using std::cout, std::cin, std::string, std::vector, std::swap;
 
@@ -189,27 +190,76 @@ public:
 
 int main()
 {
+	int ch;
 	int n;
-	cout << "Enter number of processes: "; 
-	cin >> n;
-	vector<int> at(n), bt(n);
-	cout << "Enter Arrival Times (" << n << "): ";
-	for (int i = 0; i < n; i++)
-		cin >> at[i];
-
-	cout << "Enter Burst Times (" << n << "): ";
-	for (int i = 0; i < n; i++)
-		cin >> bt[i];
-
+	vector<int> at, bt;
 	ScheduleProcesses obj;
-	obj.acceptProcesses(at, bt);
+	cout << "[-1 Quit]\n[0 Accept New Input]\n[1 FCFS]\n[2 SJF]\n[3 RR]\n";
+
+	while (true)
+	{
+		cout << "\nCHOICE: ";
+		cin >> ch;
+			switch (ch)
+			{
+				case -1: // get out
+					return 0;
+				case 0: // reaccept input
+					cout << "Enter number of processes: "; 
+					cin >> n;
+					at.clear(); bt.clear();
+					at.resize(n); bt.resize(n);
+					cout << "Enter Arrival Times (" << n << "): ";
+					for (int i = 0; i < n; i++)
+						cin >> at[i];
+					cout << "Enter Burst Times (" << n << "): ";
+					for (int i = 0; i < n; i++)
+						cin >> bt[i];
+				break;
+				case 1:
+					obj.acceptProcesses(at, bt);
+					obj.fcfs();
+					obj.printTimes("FCFS");
+				break;
+				case 2:
+					obj.acceptProcesses(at, bt);
+					obj.sjf();
+					obj.printTimes("SJF");
+				break;
+				case 3:
+					int tq;
+					cout << "Enter time quantum: ";
+					cin >> tq;
+					obj.acceptProcesses(at, bt);
+					obj.rr(tq);
+					obj.printTimes("RR");
+				break;
+				default:
+					cout << "Invalid Number\n";
+			}
+	}
+
+	// int n;
+	// cout << "Enter number of processes: "; 
+	// cin >> n;
+	// vector<int> at(n), bt(n);
+	// cout << "Enter Arrival Times (" << n << "): ";
+	// for (int i = 0; i < n; i++)
+	// 	cin >> at[i];
+
+	// cout << "Enter Burst Times (" << n << "): ";
+	// for (int i = 0; i < n; i++)
+	// 	cin >> bt[i];
+
+	// ScheduleProcesses obj;
+	// obj.acceptProcesses(at, bt);
 	
-	obj.fcfs();
-	obj.printTimes("First Come First Serve");
+	// obj.fcfs();
+	// obj.printTimes("First Come First Serve");
 
-	obj.sjf();
-	obj.printTimes("Shortest Job First (Non Preemptive)");
+	// obj.sjf();
+	// obj.printTimes("Shortest Job First (Non Preemptive)");
 
-	obj.rr(2);
-	obj.printTimes("Round Robin");
+	// obj.rr(2);
+	// obj.printTimes("Round Robin");
 }
