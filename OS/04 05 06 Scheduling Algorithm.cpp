@@ -13,12 +13,6 @@ class ScheduleProcesses
 private:
 	int n;
 	vector<int> at, bt, ct, tat, wt;
-	// vector<string> asdfjkl;
-	
-	// int sjfHelper()
-	// {
-	// 	return 0;
-	// }
 public:
 	void acceptProcesses(vector<int> at, vector<int> bt)
 	{
@@ -169,21 +163,24 @@ public:
 			cout << i << " ";
 
 		float avgtat = 0, avgwt = 0;
-		cout << "\nTurn Around Time: ";
+		cout << "\nTurn Around Times: ";
 		for (int &i : tat)
 		{
 			cout << i << " ";
 			avgtat += i;
 		}
-		cout << "\nWaiting Time: ";
+		cout << "\nWaiting Times: ";
 		for (int &i : wt)
 		{
 			cout << i << " ";
 			avgwt += i;
 		}
 
+		cout << "\nTotal Time Taken: " << ct.back() << "\n";
+		cout << "Total Turn Around Time: " << avgtat << "\n";
+		cout << "Total Waiting Time: " << avgwt << "\n";
 		avgtat /= n; avgwt /= n;
-		cout << "\nAverage Turn Around Time: " << avgtat << "\n";
+		cout << "Average Turn Around Time: " << avgtat << "\n";
 		cout << "Average Waiting Time: " << avgwt << "\n";
 	}
 };
@@ -239,27 +236,5 @@ int main()
 			}
 	}
 
-	// int n;
-	// cout << "Enter number of processes: "; 
-	// cin >> n;
-	// vector<int> at(n), bt(n);
-	// cout << "Enter Arrival Times (" << n << "): ";
-	// for (int i = 0; i < n; i++)
-	// 	cin >> at[i];
-
-	// cout << "Enter Burst Times (" << n << "): ";
-	// for (int i = 0; i < n; i++)
-	// 	cin >> bt[i];
-
-	// ScheduleProcesses obj;
-	// obj.acceptProcesses(at, bt);
-	
-	// obj.fcfs();
-	// obj.printTimes("First Come First Serve");
-
-	// obj.sjf();
-	// obj.printTimes("Shortest Job First (Non Preemptive)");
-
-	// obj.rr(2);
-	// obj.printTimes("Round Robin");
+	return 0;
 }
