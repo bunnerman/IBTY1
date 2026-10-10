@@ -1,68 +1,51 @@
-// Code for FCFS, 
-// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE// STILL INCOMLPLETE
+// Code for FCFS, SJF and RR implementation
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
 using std::cout, std::cin, std::string, std::vector, std::swap;
 
-void rearrangeList(int n, vector<int>& at, vector<int>& bt)
-{
-	for (int i = 0; i < n; i++)
-		for (int j = i + 1; j < n; j++)
-			if (at[i] > at[j])
-			{
-				swap(at[i], at[j]);
-				swap(bt[i], bt[j]);
-			}
-}
-
-void printTimes(int n, vector<int>& at, vector<int>& bt, vector<int>& ct, vector<int>& tat, vector<int>& wt)
-{
-	cout << "\nCompletion Time: ";
-	for (int &i : ct)
-		cout << i << " ";
-
-	float avgtat = 0, avgwt = 0;
-	cout << "\nTurn Around Time: ";
-	for (int &i : tat)
-	{
-		cout << i << " ";
-		avgtat += i;
-	}
-	cout << "\nWaiting Time: ";
-	for (int &i : wt)
-	{
-		cout << i << " ";
-		avgwt += i;
-	}
-
-	avgtat /= n; avgwt /= n;
-	cout << "\nAverage Turn Around Time: " << avgtat << "\n";
-	cout << "Average Waiting Time: " << avgwt << "\n";
-}
-
-struct Process
-{
-	int at, bt, ct, tat, wt;
-};
-
-class SchedulingAlgorithm
+class ScheduleProcesses
 {
 private:
 	int n;
-	int t = 0;
 	vector<int> at, bt, ct, tat, wt;
+	vector<string> gh;
+	
+	int sjfHelper()
+	{
+		
+	}
 public:
-	SchedulingAlgorithm(int n, vector<int>& at, vector<int>& bt)
+	void acceptProcesses(vector<int> at, vector<int> bt)
 	{
 		this->n = n;
 		this->at = at;
 		this->bt = bt;
-		rearrangeList(n, this->at, this->bt);
 	}
+
+	void rearrangeList()
+	{
+		int n = at.size();
+		for (int i = 0; i < n; i++)
+			for (int j = i + 1; j < n; j++)
+				if (at[i] > at[j])
+				{
+					swap(at[i], at[j]);
+					swap(bt[i], bt[j]);
+				}
+	}
+
 	int fcfs()
 	{
+		int t = 0;
+
+		n = at.size();
+		ct.clear(); tat.clear(); wt.clear();
+		ct.resize(n); tat.resize(n); wt.resize(n);
+		rearrangeList();
+
 		for (int i = 0; i < n; i++)
 		{
 			if (at[i] > t) // if idle time
@@ -75,30 +58,80 @@ public:
 			wt[i] = tat[i] - bt[i];
 		}
 
-		printTimes(n, at, bt, ct, tat, wt);
 		return t;
 	}
 	int sjf()
 	{
+		n = at.size();
+		ct.clear(); tat.clear(); wt.clear();
+		ct.resize(n); tat.resize(n); wt.resize(n);
+		rearrangeList();
 
+		int t = 0;
+
+		int tt = 0; // total time (required to finish)
+		for (int &i : bt)
+		tt += i;
+		
+		vector<int> rt = bt; // remaining time
+		int cpi; // current process index
+
+		for (int pt = 0; pt < tt; pt++) // present time
+		{
+							
+		}
+ 
+		return t;
 	}
 	int rr()
 	{
+		int t = 0;
 
+		return t;
+	}
+
+	void printTimes()
+	{
+		cout << "\nCompletion Time: ";
+		for (int &i : ct)
+			cout << i << " ";
+
+		float avgtat = 0, avgwt = 0;
+		cout << "\nTurn Around Time: ";
+		for (int &i : tat)
+		{
+			cout << i << " ";
+			avgtat += i;
+		}
+		cout << "\nWaiting Time: ";
+		for (int &i : wt)
+		{
+			cout << i << " ";
+			avgwt += i;
+		}
+
+		avgtat /= n; avgwt /= n;
+		cout << "\nAverage Turn Around Time: " << avgtat << "\n";
+		cout << "Average Waiting Time: " << avgwt << "\n";
 	}
 };
-
 
 int main()
 {
 	int n;
-	cout << "Enter number of processes: "; cin >> n;
+	cout << "Enter number of processes: "; 
+	cin >> n;
 	vector<int> at(n), bt(n);
-	cout << "Enter Arrival Times (" << n << "): "; for (int &i : at) cin >> i;
-	cout << "Enter Burst Times (" << n << "): "; for (int &i : bt) cin >> i;
+	cout << "Enter Arrival Times (" << n << "): ";
+	for (int i = 0; i < n; i++)
+		cin >> at[i];
 
-	SchedulingAlgorithm obj(n, at, bt);
+	cout << "Enter Burst Times (" << n << "): ";
+	for (int i = 0; i < n; i++)
+		cin >> bt[i];
+
+	ScheduleProcesses obj;
+	obj.acceptProcesses(at, bt);
 	obj.fcfs();
-	obj.sjf();
-	obj.rr();
+	obj.printTimes();
 }
