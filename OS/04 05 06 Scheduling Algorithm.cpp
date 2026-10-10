@@ -176,7 +176,7 @@ public:
 			avgwt += i;
 		}
 
-		cout << "\nTotal Time Taken: " << ct.back() << "\n";
+		cout << "\nTotal Time Taken: " << *std::max_element(ct.begin(), ct.end()) << "\n";
 		cout << "Total Turn Around Time: " << avgtat << "\n";
 		cout << "Total Waiting Time: " << avgwt << "\n";
 		avgtat /= n; avgwt /= n;
