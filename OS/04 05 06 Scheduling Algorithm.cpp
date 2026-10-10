@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 using std::cout, std::cin, std::string, std::vector, std::swap;
 
@@ -11,16 +12,16 @@ class ScheduleProcesses
 private:
 	int n;
 	vector<int> at, bt, ct, tat, wt;
-	vector<string> gh;
+	// vector<string> asdfjkl;
 	
-	int sjfHelper()
-	{
-		
-	}
+	// int sjfHelper()
+	// {
+	// 	return 0;
+	// }
 public:
 	void acceptProcesses(vector<int> at, vector<int> bt)
 	{
-		this->n = n;
+		this->n = at.size();
 		this->at = at;
 		this->bt = bt;
 	}
@@ -40,7 +41,6 @@ public:
 	int fcfs()
 	{
 		int t = 0;
-
 		n = at.size();
 		ct.clear(); tat.clear(); wt.clear();
 		ct.resize(n); tat.resize(n); wt.resize(n);
@@ -60,38 +60,109 @@ public:
 
 		return t;
 	}
+
 	int sjf()
 	{
-		n = at.size();
-		ct.clear(); tat.clear(); wt.clear();
-		ct.resize(n); tat.resize(n); wt.resize(n);
-		rearrangeList();
-
 		int t = 0;
+        n = at.size();
+        ct.clear(); tat.clear(); wt.clear();
+        ct.resize(n); tat.resize(n); wt.resize(n);
+        rearrangeList();
 
-		int tt = 0; // total time (required to finish)
-		for (int &i : bt)
-		tt += i;
-		
+        vector<bool> compP(n, false);
+        int cp = 0; // number of completed processes
+
+        while (cp < n)
+        {
+            int minI = -1; // minimum index for currently available viable process
+            int minBt = INT_MAX;
+
+            for (int i = 0; i < n; i++)
+                if (!compP[i] && at[i] <= t && bt[i] < minBt)
+                {
+                    minBt = bt[i];
+                    minI = i;
+                }
+
+            if (minI == -1)
+            {
+                int nextAt = INT_MAX;
+                for (int i = 0; i < n; i++)
+                    if (!compP[i] && at[i] < nextAt)
+                        nextAt = at[i];
+                t = nextAt;
+                continue;
+            }
+
+            t += bt[minI];
+            ct[minI] = t;
+            compP[minI] = true;
+            cp++;
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            tat[i] = ct[i] - at[i];
+            wt[i] = tat[i] - bt[i];
+        }
+
+        return t;
+	}
+	
+	int rr(int tq)
+	{
+		int t = 0;
+        n = at.size();
+        ct.clear(); tat.clear(); wt.clear();
+        ct.resize(n); tat.resize(n); wt.resize(n);
+        rearrangeList();
+
 		vector<int> rt = bt; // remaining time
-		int cpi; // current process index
+        int cmplt = 0;
 
-		for (int pt = 0; pt < tt; pt++) // present time
-		{
-							
-		}
- 
+        if (n > 0) 
+			t = at[0];
+
+        while (cmplt < n)
+        {
+            bool found = false;
+
+            for (int i = 0; i < n; i++)
+                if (at[i] <= t && rt[i] > 0)
+                {
+                    found = true;
+
+                    if (rt[i] > tq)
+                    {
+                        t += tq;
+                        rt[i] -= tq;
+                    }
+                    else
+                    {
+                        t += rt[i];
+                        rt[i] = 0;
+                        ct[i] = t;
+                        cmplt++;
+                    }
+                }
+
+            if (!found)
+                t++;
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            tat[i] = ct[i] - at[i];
+            wt[i] = tat[i] - bt[i];
+        }
+
 		return t;
 	}
-	int rr()
-	{
-		int t = 0;
 
-		return t;
-	}
-
-	void printTimes()
+	void printTimes(string name)
 	{
+		cout << "\n--------" << name << "--------\n";
+
 		cout << "\nCompletion Time: ";
 		for (int &i : ct)
 			cout << i << " ";
@@ -132,6 +203,13 @@ int main()
 
 	ScheduleProcesses obj;
 	obj.acceptProcesses(at, bt);
+	
 	obj.fcfs();
-	obj.printTimes();
+	obj.printTimes("First Come First Serve");
+
+	obj.sjf();
+	obj.printTimes("Shortest Job First (Non Preemptive)");
+
+	obj.rr(2);
+	obj.printTimes("Round Robin");
 }
