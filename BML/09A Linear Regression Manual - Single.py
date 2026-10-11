@@ -11,7 +11,10 @@ def predict(v):
 
 print("Intercept:", round(b0, 2))
 print("Slope:", round(b1, 2))
-print("Predicted marks for 6 hours:", round(predict(6), 2))
+
+for i in range(5, 9+1):
+	print(f"{i}: {round(predict(i), 2)}")
+
 pred = [predict(v) for v in x]
 mse = sum((y[i] - pred[i]) ** 2 for i in range(n)) / n
 print("Training MSE:", round(mse, 2))
