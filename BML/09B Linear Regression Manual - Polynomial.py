@@ -1,8 +1,5 @@
-# Fit y = b0 + b1*x + b2*x^2 using normal equations
-# Gaussian elimination solves the 3-by-3 system.
-
-x = [1, 2, 3, 4, 5]
-y = [1, 4, 9, 16, 25]
+x = [1, 2, 3, 4, 5, 6]
+y = [1, 4, 9, 16, 27, 36]
 degree = 2
 
 sx = [sum(v**p for v in x) for p in range(2 * degree + 1)]
@@ -26,10 +23,11 @@ for i in range(degree + 1):
 
 coef = b  # [b0, b1, b2]
 
-
 def predict_poly(v):
     return sum(coef[p] * (v**p) for p in range(degree + 1))
 
 
 print("Coefficients:", [round(c, 3) for c in coef])
-print("Prediction for x=6:", round(predict_poly(6), 2))
+
+for i in range(7, 15):
+    print(f"x={i}: {round(predict_poly(i), 2)}")
