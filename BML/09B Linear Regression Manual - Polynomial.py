@@ -1,5 +1,5 @@
-x = [1, 2, 3, 4, 5, 6]
-y = [1, 4, 9, 16, 27, 36]
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 27]
 degree = 2
 
 sx = [sum(v**p for v in x) for p in range(2 * degree + 1)]
@@ -31,3 +31,5 @@ print("Coefficients:", [round(c, 3) for c in coef])
 
 for i in range(7, 15):
     print(f"x={i}: {round(predict_poly(i), 2)}")
+
+print(round(predict_poly(6), 2))
