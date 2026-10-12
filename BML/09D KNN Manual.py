@@ -18,5 +18,5 @@ def predict_knn(point):
     return max(votes, key=votes.get)
 
 
-for point in [(2, 2), (5, 4)]:
+for point in [(2, 2), (5, 4), (3, 6), (2, 7), (6, 7), (4, 7)]:
     print("Point:", point, "Predicted class:", predict_knn(point))
