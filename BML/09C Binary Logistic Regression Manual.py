@@ -27,9 +27,11 @@ def classify(hours):
     return p, (1 if p >= 0.5 else 0)
 
 
-for hours in range(1, 6+1):
+print("hrs  probability   class")
+for i in range(3*10, 4*10+1):
+    hours = i * 0.1
     p, label = classify(hours)
-    print(hours, "hours -> probability", round(p, 3), "class", label)
+    print(f"{hours:.1f}  {round(p, 3):<11}   {label}")
 
 correct = sum(classify(h)[1] == y[i] for i, h in enumerate(x_raw))
 print("Training accuracy:", round(100 * correct / n, 2), "%")
