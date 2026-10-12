@@ -27,7 +27,7 @@ def classify(hours):
     return p, (1 if p >= 0.5 else 0)
 
 
-for hours in [2, 5]:
+for hours in range(1, 6+1):
     p, label = classify(hours)
     print(hours, "hours -> probability", round(p, 3), "class", label)
 
