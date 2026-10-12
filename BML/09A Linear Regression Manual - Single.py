@@ -1,5 +1,5 @@
-x = [1, 2, 3, 4, 5]
-y = [35, 40, 50, 55, 65]
+x = [1, 2, 3, 4, 5] # study hours
+y = [35, 40, 50, 55, 65] # marks achieved
 n = len(x)
 xm, ym = sum(x) / n, sum(y) / n
 num = sum((x[i] - xm) * (y[i] - ym) for i in range(n))
@@ -12,8 +12,11 @@ def predict(v):
 print("Intercept:", round(b0, 2))
 print("Slope:", round(b1, 2))
 
-for i in range(5, 9+1):
-	print(f"{i}: {round(predict(i), 2)}")
+for i in range(5, 10+1):
+	mks = round(predict(i), 2)
+	if mks > 100: 
+		mks = 100
+	print(f"{i}: {mks}")
 
 pred = [predict(v) for v in x]
 mse = sum((y[i] - pred[i]) ** 2 for i in range(n)) / n
