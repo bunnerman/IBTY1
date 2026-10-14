@@ -36,7 +36,6 @@ public class programA {
 				pstmt.executeUpdate();
 			}
 
-			System.out.println("All Student Records:");
                 System.out.println();
                 System.out.printf("%-10s | %-20s | %-10s%n", "Roll No", "Name", "Marks");
                 System.out.println();
