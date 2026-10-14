@@ -26,10 +26,10 @@ public class programB {
                 while (rs.next()) {
                     int rollNo = rs.getInt("RollNo");
                     String name = rs.getString("Name");
-                    int marks = rs.getInt("Marks");
+                    double marks = rs.getDouble("Marks");
 
                     // formatted
-                    System.out.printf("%-10d | %-20s | %-10d\n", rollNo, name, marks);
+                    System.out.printf("%-10d | %-20s | %-10.1f\n", rollNo, name, marks);
                 }
 		}
 		catch (ClassNotFoundException e) {
