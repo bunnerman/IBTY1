@@ -53,8 +53,6 @@ public class programA {
                     // formatted
                     System.out.printf("%-10d | %-20s | %-10d\n", rollNo, name, marks);
                 }
-				if (!found)
-                    System.out.println("Empty Table");
 		}
 		catch (ClassNotFoundException e) {
             System.out.println("Err, Error1: " + e.getMessage());
