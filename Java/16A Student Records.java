@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 
-public class StudentAssignment {
+public class programA {
     public static void main(String[] args) {
 
 		try {
 			Class.forName("org.sqlite.JDBC");
-			String url = "jdbc:sqlite:programA.db";
+			String url = "jdbc:sqlite:students.db";
 			Connection conn = DriverManager.getConnection(url);
 
 			String createTableSQL = "CREATE TABLE IF NOT EXISTS Student (" +
@@ -23,14 +23,18 @@ public class StudentAssignment {
 			String insertSQL = "INSERT INTO Student (RollNo, Name, Marks) VALUES (?, ?, ?)";
 
 			PreparedStatement pstmt = conn.prepareStatement(insertSQL);
-			pstmt.setInt(1, 4);
-			pstmt.setString(2, "Larry");
-			pstmt.setInt(3, 87);
-			pstmt.executeUpdate();
-			pstmt.setInt(1, 67);
-			pstmt.setString(2, "John");
-			pstmt.setInt(3, 67);
-			pstmt.executeUpdate();
+
+			for (int i = 0; i < 10; i++)
+			{
+				int[] rollsAry = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+				String[] namesAry = {"David", "Eli", "Arnold", "Peter", "Evelyn", "Matias", "William", "Robin", "Tom", "Bob"};
+				int[] marksAry = {23, 65, 85, 43, 87, 99, 32, 67, 43, 74};
+
+				pstmt.setInt(1, rollsAry[i]);
+				pstmt.setString(2, namesAry[i]);
+				pstmt.setInt(3, marksAry[i]);
+				pstmt.executeUpdate();
+			}
 
 			System.out.println("All Student Records:");
                 System.out.println();
