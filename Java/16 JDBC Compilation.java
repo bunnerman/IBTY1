@@ -41,21 +41,22 @@ public class programMega {
 
         // PROGRAM B - display higher than 70
             String query = "SELECT RollNo, Name, Marks FROM Student WHERE Marks > 70";
-                
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next()) {
-                    int rollNo = rs.getInt("RollNo");
-                    String name = rs.getString("Name");
-                    double marks = rs.getDouble("Marks");
+			System.out.println();
+			System.out.printf("%-10s | %-20s | %-10s%n", "Roll No", "Name", "Marks");
+			System.out.println();
+			
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				int rollNo = rs.getInt("RollNo");
+				String name = rs.getString("Name");
+				double marks = rs.getDouble("Marks");
 
-                    // formatted
-                    System.out.printf("%-10d | %-20s | %-10.2f\n", rollNo, name, marks);
-                }
+				// formatted
+				System.out.printf("%-10d | %-20s | %-10.2f\n", rollNo, name, marks);
+			}
             
+			System.out.print("\n\n\n------------------SEPARATOR------------------\n\n\n");
 
-                System.out.println();
-                System.out.printf("%-10s | %-20s | %-10s%n", "Roll No", "Name", "Marks");
-                System.out.println();
 
         // PROGRAM C - updates third roll number to 39.5
             stmt = conn.createStatement();
@@ -87,7 +88,7 @@ public class programMega {
                 double marks = rs.getDouble("Marks");
 
                 // formatted
-                System.out.printf("%-10d | %-20s | %-10.2f\n", rollNo, name, marks);
+                System.out.printf("%-10d | %-20s | %-10.1f\n", rollNo, name, marks);
             }
         }
         catch (ClassNotFoundException e) {
