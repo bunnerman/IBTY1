@@ -45,10 +45,10 @@ public class StudentAssignment {
                     found = true;
                     int rollNo = rs.getInt("RollNo");
                     String name = rs.getString("Name");
-                    double percentage = rs.getDouble("Marks");
+                    int marks = rs.getInt("Marks");
 
                     // formatted
-                    System.out.printf("%-10d | %-20s | %-10.2f%n", rollNo, name, percentage);
+                    System.out.printf("%-10d | %-20s | %-10d\n", rollNo, name, marks);
                 }
 				if (!found)
                     System.out.println("Empty Table");
