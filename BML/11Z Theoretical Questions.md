@@ -22,7 +22,7 @@ Adaboost stands for Adaptive Boost, it builds a series of weak models (usually d
 
 | Parameter              | Bagging                                           | Boosting                                                                    |
 | ---------------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Training**           | Parallel Manner                                   | Serially (Sequentia                                                         |
+| **Training**           | Parallel Manner                                   | Serially (Sequentially)                                                         |
 | **Objective**          | Reduce Variance                                   | Reduce B                                                                    |
 | **Weighting Policy**   | Sampled randomly with replacement (Bootstrapping) | Misclassifications get higher wei                                           |
 | **Training Speed**     | Faster as Parallel                                | Slower as Serial, must wait for previous model to f                         |
