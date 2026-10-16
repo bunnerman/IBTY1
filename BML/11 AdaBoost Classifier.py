@@ -23,10 +23,11 @@ print("n estimators:", model.n_estimators)
 print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
+print(f"Estmtrs   Acccuracy    F1 Score")
 for n in (10, 20, 30, 40, 50, 60, 70, 80, 90, 100):
     model2 = AdaBoostClassifier(estimator=base_learner, n_estimators=n, random_state=1)
     model2.fit(X_train, y_train)
     y_pred2 = model2.predict(X_test)
     acc = round(accuracy_score(y_test, y_pred2), 3)
     f1s = round(f1_score(y_test, y_pred2), 3)
-    print(f"{n:3d} - Acc: {acc} | F1: {f1s}")
+    print(f"{n:3d}        {acc}       {f1s}")
