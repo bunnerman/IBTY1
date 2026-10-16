@@ -1,5 +1,5 @@
 ##### 1] Explain Boosting Ensemble method with diagram
-Boosting is a ensemble machine learning technique that trains (mostly homogeneous) models sequentially rather than in parallel like in bagging
+Boosting is a ensemble machine learning technique that trains models sequentially rather than in parallel like in bagging
 Every model specifically seeks to fix the errors made by their predecessors. Weights of misclassified or difficult to predict examples are increased and a strong learner is made from multiple weak learners
 
 ```
@@ -91,6 +91,7 @@ The final model is usually a simpler model like linear or logistic regression
                                         |                                     
                                         |                                     
                                         v                                     
+                          Final Strong Prediction from Meta-Model             
 ```
 
 ##### 7] Explain voting classifier with hard and soft voting.
