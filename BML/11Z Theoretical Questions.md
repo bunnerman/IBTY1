@@ -20,14 +20,14 @@ Adaboost stands for Adaptive Boost, it builds a series of weak models (usually d
 
 ##### 3] How does boosting differ from bagging?
 
-| Parameter              | Bagging                                           | Boosting                                                                    |
-| ---------------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Training**           | Parallel Manner                                   | Serially (Sequentially)                                                         |
-| **Objective**          | Reduce Variance                                   | Reduce B                                                                    |
-| **Weighting Policy**   | Sampled randomly with replacement (Bootstrapping) | Misclassifications get higher wei                                           |
-| **Training Speed**     | Faster as Parallel                                | Slower as Serial, must wait for previous model to f                         |
-| **Outlier Protection** | High as they have minimal impact              Very low as outliers have massive weight gain, leading to wasted info gain  data  |
-| **Examples**           | Random Forest                                     | Adaboost,                                                                   |
+| Parameter              | Bagging                                           | Boosting                                                                         |
+| ---------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **Training**           | Parallel Manner                                   | Serially (Sequentially)                                                          |
+| **Objective**          | Reduce Variance                                   | Reduce B                                                                         |
+| **Weighting Policy**   | Sampled randomly with replacement (Bootstrapping) | Misclassifications get higher weight                                             |
+| **Training Speed**     | Faster as Parallel                                | Slower as its Serial, must wait for previous model to train                      |
+| **Outlier Protection** | High as they have minimal impact                  | Very low as outliers have massive weight gain, leading to wasted info gain  data |
+| **Examples**           | Random Forest                                     | Adaboost,                                                                        |
 
 ##### 4] What is the role of `n_estimators`? 
 `n_estimators` in boosting is the total number of iterations (models) boosting will be performed on i.e. number of models and looping through the process of training weak learners.
